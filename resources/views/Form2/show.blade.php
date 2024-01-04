@@ -33,6 +33,7 @@
     <div class="row justify-content-center">
       <div class="card">
         <div class="card-header text-center">View</div>
+
         <table class="table table-striped table-responsive table-hover table-bordered table-condensed">
           <thead>
             <tr>
@@ -47,18 +48,22 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($data as $data)
+            @foreach ($data as $item)
            
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $data->post }}</td>
+              <td>{{ $item->post }}</td>
               
-              <td>{{ $data->c_name }}</td>
-              <td>{{ $data->work1 }}</td>
-              <td>{{ $data->work2}}</td>
-              <td>{{ $data->timeline }}</td>
-              <td>{{ $data->cost }}</td>
-              <td>{{ $data->tone }}</td>
+              <td>{{ $item->c_name }}</td>
+              
+              <td>
+                
+            Name:{{$data_second->name}} <br> Type: {{$data_second->type}} <br> Description:{{$data_second->description}} <br> URL: {{$data_second->url}}
+            </td> 
+              <td> Name:{{$data_third->name}} <br> Type: {{$data_third->type}} <br> Description:{{$data_third->description}} <br> URL: {{$data_third->url}}</td>
+              <td>{{ $item->timeline }}</td>
+              <td>{{ $item->cost }}</td>
+              <td>{{ $item->tone }}</td>
             </tr>
             @endforeach
           </tbody>
@@ -80,6 +85,9 @@
 </body>
 
 </html>
+
+
+
 
 
 

@@ -45,14 +45,15 @@
                 <label for="work1">Select Work Experience 1</label>
                 <select id="work1" name="work1" class="form-control">
                   @foreach ($data as $item)
-                  <option>{{$item->name }}</option>
+
+                   <option value="{{$item->id}}">{{$item->name }}</option>
                   @endforeach
                 </select>
 
                 <label for="work2">Select Work Experience 2</label>
                 <select id="work2" name="work2" class="form-control">
                   @foreach ($data as $item)
-                  <option>{{$item->name }}</option>
+                  <option value="{{$item->id}}">{{$item->name }}</option>
                   @endforeach
                 </select>
 
