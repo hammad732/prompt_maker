@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prompt_makers', function (Blueprint $table) {
+        Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type');
-            $table->string('description');
-            $table->string('url');
-         
+            $table->string('title')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('prompt_makers');
+        Schema::dropIfExists('links');
     }
 };

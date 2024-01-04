@@ -23,14 +23,13 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">Prompt Form</div>
+          <!-- @dd($data); -->
           <form action="{{ route('prompt.store') }}" method="POST">
             @csrf
-            @if(session('success'))
-            <div class="alert alert-success">
-              {{ session('success') }}
-            </div>
-            @endif
-            <div class="card-body">
+           
+           
+
+                      <div class="card-body">
               <div class="form-group">
                 <label for="">Job Post</label>
                 <input type="text" class="form-control" name="post" id="" aria-describedby="helpId" placeholder="Enter Post">
@@ -42,38 +41,42 @@
               </div>
 
               <div class="form-group">
-                <label for="work1">Select Work Experience 1</label>
+                <label for="work1"></label>
                 <select id="work1" name="work1" class="form-control">
+                  
                   @foreach ($data as $item)
-                  <option>{{$item->name }}</option>
+                  <option value="{{$item->id.''. $item->name . ' ' . $item->type  }}">{{ $item->name }}</option>
+                  <!-- <input type="text" value="{{$item->id}}" name="prompt_maker_id" id=""> -->
+
                   @endforeach
                 </select>
 
                 <label for="work2">Select Work Experience 2</label>
                 <select id="work2" name="work2" class="form-control">
                   @foreach ($data as $item)
-                  <option>{{$item->name }}</option>
+                  <option value="{{$item->id.''. $item->name . ' ' . $item->type }}">{{ $item->name }}</option>
                   @endforeach
                 </select>
-
-
-                <div class="form-group">
-                  <label for="">Timeline</label>
-                  <input type="text" class="form-control" name="timeline" id="" aria-describedby="helpId" placeholder="Enter Timeline">
-                </div>
-                <div class="form-group">
-                  <label for="">Cost</label>
-                  <input type="text" class="form-control" name="cost" id="" aria-describedby="helpId" placeholder="Enter Cost">
-                </div>
-                <div class="form-group">
-                  <label for="">Tone</label>
-                  <input type="text" class="form-control" name="tone" id="" aria-describedby="helpId" placeholder="Enter Tone">
-                </div>
-                <center>
-                  <!-- <a href="route(url('Form2.show'))"type="submit" class="btn btn-primary">Submit</a> -->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </center>
               </div>
+
+
+              <div class="form-group">
+                <label for="">Timeline</label>
+                <input type="text" class="form-control" name="timeline" id="" aria-describedby="helpId" placeholder="Enter Timeline">
+              </div>
+              <div class="form-group">
+                <label for="">Cost</label>
+                <input type="text" class="form-control" name="cost" id="" aria-describedby="helpId" placeholder="Enter Cost">
+              </div>
+              <div class="form-group">
+                <label for="">Tone</label>
+                <input type="text" class="form-control" name="tone" id="" aria-describedby="helpId" placeholder="Enter Tone">
+              </div>
+              <center>
+                <!-- <a href="route(url('Form2.show'))"type="submit" class="btn btn-primary">Submit</a> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </center>
+            </div>
           </form>
         </div>
 

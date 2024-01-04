@@ -9,4 +9,7 @@ class PromptForm extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function prompt(){
+        return $this->hasMany(PromptMaker::class);
+    }
 }

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('prompt_forms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('prompt_maker_id')->constrained('prompt_makers')->onDelete('cascade');
+
             $table->string('post')->nullable();
             $table->string('c_name')->nullable();
             $table->string('work1')->nullable();

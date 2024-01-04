@@ -32,28 +32,29 @@
                      <div class="form-group">
                        <label for="">Project Title</label>
                        <input type="text"
-                         class="form-control" name="name" id="" aria-describedby="helpId" placeholder="Enter Project Title">
+                         class="form-control" name="name" id="" aria-describedby="helpId" placeholder="Enter Project Title" required>
                      </div>
 
                      <div class="form-group">
                        <label for="">Type</label>
                        <input type="text"
-                         class="form-control" name="type" id="" aria-describedby="helpId" placeholder="Enter Type">
+                         class="form-control" name="type" id="" aria-describedby="helpId" placeholder="Enter Type" required>
                      </div>
 
                      <div class="form-group">
                        <label for="">Description</label>
                        <input type="text"
-                         class="form-control" name="description" id="" aria-describedby="helpId" placeholder="Enter Description" >
+                         class="form-control" name="description" id="" aria-describedby="helpId" placeholder="Enter Description" required>
                      </div>
                      <div class="form-group">
                        <label for="">URL</label>
                        <input type="text"
-                         class="form-control" name="url" id="" aria-describedby="helpId" placeholder="Enter URL" >
+                         class="form-control" name="url" id="" aria-describedby="helpId" placeholder="Enter URL" required>
                      </div>
                     <center>
                       <button type="submit" class="btn btn-primary">Submit</button>
-                      <a href="{{route('prompt.create')}}"class="btn btn-success">Next</a>
+                     
+                      <a href="{{route('prompt.create')}}" type="submit" class="btn btn-success">Next</a>
                     </center>
                     </div>
                 </form>

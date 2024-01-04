@@ -25,7 +25,7 @@ class PromptController extends Controller
     public function prompt_index()
     {
         
-        $data = $this->_prompt->all();
+        $data = PromptForm ::with('PromptMaker')->get();
         return view('Form2.show', compact('data'));
     }
     
@@ -43,12 +43,11 @@ class PromptController extends Controller
     {
         // dd($this->_request->all());
         $this->validate($this->_request, [
+            'prompt_maker_id'=> 'numeric',
             'post' => 'string|nullable',
             'c_name' => 'string|nullable',
             'work1' => 'string|nullable',
-    
             'work2' => 'string|nullable',
-     
             'timeline'=> 'string|nullable',
             'cost'=> 'string|nullable',
             'tone'=> 'string|nullable',

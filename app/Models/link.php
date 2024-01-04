@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PromptMaker extends Model
+class link extends Model
 {
     use HasFactory;
-    protected $guarded=[];
-    public function promptForm()
+    protected $guarded = [];
+
+    public function link()
     {
-        return $this->belongsTo(PromptForm::class );
+        return $this->hasOne(PromptMaker::class);
     }
 }

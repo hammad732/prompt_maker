@@ -47,15 +47,41 @@
             </tr>
           </thead>
           <tbody>
+          @if(session('success'))
+            <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+            @endif
             @foreach ($data as $data)
-           
+            @php
+            $work = explode("||", $data->work1);
+            $work2 = explode("||", $data->work2);
+            @endphp
+          
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $data->post }}</td>
               
               <td>{{ $data->c_name }}</td>
-              <td>{{ $data->work1 }}</td>
-              <td>{{ $data->work2}}</td>
+              
+              <td>
+                @foreach($work as $key => $work11)
+                  @if($key == 0 )
+                  Title: 
+                  @elseif($key == 1 )
+                  Type: 
+                  @endif
+              {{  $work11 }} </br>
+              @endforeach
+              </td>
+              <td> @foreach($work2 as $key => $work12)
+                  @if($key == 0 )
+                  Title: 
+                  @elseif($key == 1 )
+                  Type: 
+                  @endif
+              {{  $work12 }} </br>
+              @endforeach</td>
               <td>{{ $data->timeline }}</td>
               <td>{{ $data->cost }}</td>
               <td>{{ $data->tone }}</td>
@@ -64,7 +90,7 @@
           </tbody>
         </table>
         <a name="" id="" class="btn btn-primary" href="{{ route('prompt.create') }}" role="button">Add More</a>
-        @if(session('success'))
+        <!-- @if(session('success'))
         <div class="alert alert-success">
           {{ session('success') }}
         </div>
@@ -73,7 +99,7 @@
         <div class="alert alert-danger">
           {{ session('error') }}
         </div>
-        @endif
+        @endif -->
       </div>
     </div>
   </div>
