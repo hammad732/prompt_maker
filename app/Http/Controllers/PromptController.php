@@ -24,9 +24,15 @@ class PromptController extends Controller
 
     public function prompt_index()
     {
-        
+        // dd($this->_request->all());
+        $data_second = PromptMaker::where('id', $this->_request->data1)->first();
+        $data_third = PromptMaker::where('id', $this->_request->data2)->first();
+        // dd($data_third);
+
+        // $data_second = $this->_request->all();
+        // dd($data_second);
         $data = $this->_prompt->all();
-        return view('Form2.show', compact('data'));
+        return view('Form2.show', compact('data','data_second','data_third'));
     }
     
 
@@ -36,12 +42,15 @@ class PromptController extends Controller
     public function prompt_create()
     {
         $data = $this->_modal->all();
-        
+        // dd($data);
         return view('Form2.create' , compact('data'));
     }
     public function prompt_store()
     {
         // dd($this->_request->all());
+        $data1 = PromptMaker::where('id', $this->_request->work1)->first();
+        $data2 = PromptMaker::where('id', $this->_request->work2)->first();
+        // dd($data2);
         $this->validate($this->_request, [
             'post' => 'string|nullable',
             'c_name' => 'string|nullable',
@@ -54,14 +63,16 @@ class PromptController extends Controller
             'tone'=> 'string|nullable',
         ]);
 
-        $data = $this->_request->except('_token');
+        return redirect()->route('prompt.show',compact('data1','data2'));
+        // $data = $this->_request->except('_token');
         // dd($data);
-        $var = $this->add($this->_prompt, $data);
+        // $var = $this->add($this->_prompt, $data);
 
         // return view('Form2.show' , compact('data'));
         // return redirect('Form2.show',compact('data') )->with('success', 'Data created successfully!');
         // return view('Form2.show', compact('data'))->with('success', 'Data created successfully!');
-        return redirect()->route('prompt.show')->with('success', 'Data created successfully!');
+        // return redirect()->route('prompt.show')->with('success', 'Data created successfully!', compact('data1'));
+        // return redirect('prompt.show',compact('data1'))->with('success', 'Data created successfully!');
 
     }
 }
