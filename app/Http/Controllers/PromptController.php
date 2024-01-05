@@ -10,7 +10,7 @@ use App\Traits\BaseQuery;
 
 class PromptController extends Controller
 {
-    
+
     use BaseQuery;
     private $_request = null;
     private $_modal = null;
@@ -22,19 +22,15 @@ class PromptController extends Controller
         $this->_prompt = $prompt;
     }
 
-    public function prompt_index()
-    {
-        // dd($this->_request->all());
-        $data_second = PromptMaker::where('id', $this->_request->data1)->first();
-        $data_third = PromptMaker::where('id', $this->_request->data2)->first();
-        // dd($data_third);
+    // public function prompt_index()
+    // {
+    //     $data_second = PromptMaker::where('id', $this->_request->data1)->first();
+    //     $data_third = PromptMaker::where('id', $this->_request->data2)->first();
+    //     // dd($data_second);
+    //     $data = $this->_request->all();
+    //     return view('Form2.show', compact('data','data_second','data_third'));
+    // }
 
-        // $data_second = $this->_request->all();
-        // dd($data_second);
-        $data = $this->_prompt->all();
-        return view('Form2.show', compact('data','data_second','data_third'));
-    }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -42,37 +38,22 @@ class PromptController extends Controller
     public function prompt_create()
     {
         $data = $this->_modal->all();
-        // dd($data);
-        return view('Form2.create' , compact('data'));
+        
+        return view('Form2.create', compact('data'));
     }
     public function prompt_store()
     {
-        // dd($this->_request->all());
-        $data1 = PromptMaker::where('id', $this->_request->work1)->first();
-        $data2 = PromptMaker::where('id', $this->_request->work2)->first();
-        // dd($data2);
-        $this->validate($this->_request, [
+        $data1 = $this->_modal->where('id', $this->_request->work1)->first();
+        $data2 = $this->_modal->where('id', $this->_request->work2)->first();
+        $data = $this->validate($this->_request, [
             'post' => 'string|nullable',
             'c_name' => 'string|nullable',
             'work1' => 'string|nullable',
-    
             'work2' => 'string|nullable',
-     
-            'timeline'=> 'string|nullable',
-            'cost'=> 'string|nullable',
-            'tone'=> 'string|nullable',
+            'timeline' => 'string|nullable',
+            'cost' => 'string|nullable',
+            'tone' => 'string|nullable',
         ]);
-
-        return redirect()->route('prompt.show',compact('data1','data2'));
-        // $data = $this->_request->except('_token');
-        // dd($data);
-        // $var = $this->add($this->_prompt, $data);
-
-        // return view('Form2.show' , compact('data'));
-        // return redirect('Form2.show',compact('data') )->with('success', 'Data created successfully!');
-        // return view('Form2.show', compact('data'))->with('success', 'Data created successfully!');
-        // return redirect()->route('prompt.show')->with('success', 'Data created successfully!', compact('data1'));
-        // return redirect('prompt.show',compact('data1'))->with('success', 'Data created successfully!');
-
+        return view('Form2.show', compact('data', 'data1', 'data2'));
     }
 }

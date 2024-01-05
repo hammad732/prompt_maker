@@ -40,27 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $user)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->type }}</td>
-                            <td>{{ $user->description }}</td>
-                            <td>{{ $user->url }}</td>
-                            <td>
-                                <a href="{{ route('crud.edit',$user->id)}}" class="btn btn-primary">Edit</a>
-                                <form action="{{ route('crud.destroy',$user->id)}}" method="POST" style="display:inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <a name="" id="" class="btn btn-primary" href="{{ route('crud.create') }}" role="button">Add More</a>
-                @if(session('success'))
+                    @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
@@ -70,6 +50,27 @@
                     {{ session('error') }}
                 </div>
             @endif
+                        @foreach ($data as $user)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->type }}</td>
+                            <td>{{ $user->description }}</td>
+                            <td>{{ $user->url }}</td>
+                            <td>
+                                <a href="{{ route('work.edit',$user->id)}}" class="btn btn-primary">Edit</a>
+                                <form action="{{ route('work.destroy',$user->id)}}" method="POST" style="display:inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <a name="" id="" class="btn btn-primary" href="{{ route('work.create') }}" role="button">Add More</a>
+              
             </div>
         </div>
     </div>

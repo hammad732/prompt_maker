@@ -16,14 +16,10 @@ use App\Http\Controllers\PromptController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('create');
-// });
+Route::get('/', [CrudController::class,'index']);
 
-Route::resource('/crud', CrudController::class);
+Route::resource('/work', CrudController::class);
 
 Route::get('/prompt-create', [PromptController::class, 'prompt_create'])->name('prompt.create');
 Route::post('/prompt-create', [PromptController::class, 'prompt_store'])->name('prompt.store');
-Route::get('/prompt-show', [PromptController::class, 'prompt_index'])->name('prompt.show');
-// Route::get('/promt', CrudController::class, 'prompt_index')->name('prompt.index');
 
