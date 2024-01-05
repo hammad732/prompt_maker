@@ -21,7 +21,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Update</div>
-                  <form action="{{ route('crud.update', $data->id) }}" method="POST">
+                  <form action="{{ route('work.update', $data->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 

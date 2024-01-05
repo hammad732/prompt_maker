@@ -47,16 +47,16 @@ class CrudController extends Controller
      */
     public function store()
     {
-        // dd($this->_request->all());
+       
         $this->validate($this->_request, [
-            'name' => 'string|nullable',
-            'type' => 'string|nullable',
-            'description' => 'string|nullable',
+            'name' => 'string|nullable|required',
+            'type' => 'string|nullable|required',
+            'description' => 'string|nullable|required',
             'url'=> 'url',
         ]);
 
         $data = $this->_request->except('_token');
-        // dd($data);
+      
         $var = $this->add($this->_modal, $data);
 
         return back()->with('success', 'Data created successfully!');
@@ -99,7 +99,7 @@ class CrudController extends Controller
         // Use the update method to update the record
         $this->get_by_id($this->_modal, $id)->update($data);
 
-        return redirect('crud')->with('success', 'Data updated successfully!');
+        return redirect('work')->with('success', 'Data updated successfully!');
     }
 
 
@@ -111,7 +111,7 @@ class CrudController extends Controller
 
         $data = $this->get_by_id($this->_modal, $id);
         $data->delete();
-        return redirect('crud')->with('error', 'Data deleted successfully!');
+        return redirect('work')->with('error', 'Data deleted successfully!');
     }
 
     /////////////////////////////PromptForm//////////////////////////////////

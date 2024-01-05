@@ -1,101 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>Title</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-    .card {
-      margin: 2em 0;
-      padding: 1em;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      margin-top: 50px;
+      background-color: #f4f4f4;
+      line-height: 2em;
     }
 
-    .card-header {
-      font-size: 1.5em;
-      font-weight: bold;
+    .container {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      margin-top: 20px;
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
     }
 
-    .btn-primary,
-    .btn-danger {
-      margin: 0.5em;
+    div {
+      
+      background: #fff;
+      color: #333;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    strong {
+      color: #5a5a5a;
+      font-size: 1em;
+    }
+
+    p {
+      line-height: 2em;
     }
   </style>
 </head>
 
 <body>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <div class="container">
+    <div>
 
-  <div class="container justify-content-center">
-    <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-header text-center">View</div>
+    <center><h1><span>Job Post:</span><span>{{ isset($data['post']) ? $data['post'] : '' }}</span></h1></center>
+      Client Name is:<b>{{ isset($data['c_name']) ? $data['c_name'] : '' }}</b>  &nbsp;&nbsp; Work Experience 1: &nbsp; Name:{{ $data1 ? $data1->name : '' }} &nbsp; Type:{{ $data1 ? $data1->type : ''}} &nbsp; Description:{{ $data1 ? $data1->description : ''}} &nbsp; URL:{{ $data1 ? $data1->url : ''}} &nbsp; &  &nbsp; Work Experience 2:&nbsp;  Name:{{ $data2 ? $data2->name : '' }} &nbsp; Type:{{ $data2 ? $data2->type : ''}} &nbsp; Description:{{ $data2 ? $data2->description : ''}} &nbsp; URL:{{ $data2 ? $data2->url : ''}} &nbsp;&nbsp; Estimated Timeline:{{ isset($data['timeline']) ? $data['timeline'] : '' }}&nbsp;&nbsp; Estimated Cost:<b> {{isset($data['cost']) ? $data['cost'] : '' }}</b>&nbsp;&nbsp; Tone:{{isset($data['tone'])? $data['tone'] : ''}}
 
-        <table class="table table-striped table-responsive table-hover table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Sr</th>
-              <th>Job Post</th>
-              <th>Client Name</th>
-              <th >Work Experience 1 </th>
-              <th >Work Experience 2</th>
-              <th>TimeLine</th>
-              <th>Cost</th>
-              <th>Tone</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($data as $item)
-           
-            <tr>
-              <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->post }}</td>
-              
-              <td>{{ $item->c_name }}</td>
-              
-              <td>
-                
-            Name:{{$data_second->name}} <br> Type: {{$data_second->type}} <br> Description:{{$data_second->description}} <br> URL: {{$data_second->url}}
-            </td> 
-              <td> Name:{{$data_third->name}} <br> Type: {{$data_third->type}} <br> Description:{{$data_third->description}} <br> URL: {{$data_third->url}}</td>
-              <td>{{ $item->timeline }}</td>
-              <td>{{ $item->cost }}</td>
-              <td>{{ $item->tone }}</td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-        <a name="" id="" class="btn btn-primary" href="{{ route('prompt.create') }}" role="button">Add More</a>
-        @if(session('success'))
-        <div class="alert alert-success">
-          {{ session('success') }}
-        </div>
-        @endif
-        @if(session('error'))
-        <div class="alert alert-danger">
-          {{ session('error') }}
-        </div>
-        @endif
-      </div>
+
     </div>
   </div>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--  -->
