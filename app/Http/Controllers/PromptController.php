@@ -22,15 +22,6 @@ class PromptController extends Controller
         $this->_prompt = $prompt;
     }
 
-    // public function prompt_index()
-    // {
-    //     $data_second = PromptMaker::where('id', $this->_request->data1)->first();
-    //     $data_third = PromptMaker::where('id', $this->_request->data2)->first();
-    //     // dd($data_second);
-    //     $data = $this->_request->all();
-    //     return view('Form2.show', compact('data','data_second','data_third'));
-    // }
-
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +30,7 @@ class PromptController extends Controller
     {
         $data = $this->_modal->all();
         
-        return view('Form2.create', compact('data'));
+        return view('adminContent.Form2.create', compact('data'));
     }
     public function prompt_store()
     {
@@ -54,6 +45,6 @@ class PromptController extends Controller
             'cost' => 'string|nullable',
             'tone' => 'string|nullable',
         ]);
-        return view('Form2.show', compact('data', 'data1', 'data2'));
+        return view('adminContent.Form2.show', compact('data', 'data1', 'data2'));
     }
 }

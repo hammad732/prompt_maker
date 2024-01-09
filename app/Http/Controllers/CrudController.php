@@ -27,7 +27,7 @@ class CrudController extends Controller
     public function index()
     {
         $data = $this->_modal->all();
-        return view('show', compact('data'));
+        return view('adminContent.show', compact('data'));
     }
     
 
@@ -38,7 +38,7 @@ class CrudController extends Controller
     {
         // $data = $this->_modal->all();
         
-        return view('create' );
+        return view('adminContent.create' );
     }
    
 
@@ -77,7 +77,7 @@ class CrudController extends Controller
     public function edit($id)
     {
         $data = $this->get_by_id($this->_modal, $id);
-        return view('edit', compact('data'));
+        return view('adminContent.edit', compact('data'));
     }
 
     /**

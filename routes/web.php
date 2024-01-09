@@ -1,9 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\PromptController;
 use App\Http\Controllers\PromptController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+
+
+
+Route::get('/clear', function () {
+
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    return "Cleared";
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +32,18 @@ use App\Http\Controllers\PromptController;
 |
 */
 
-Route::get('/', [CrudController::class,'index']);
 
+// Route::get("/login", [AdminController::class,"login"])->name("login");
+Route::get("/", [AdminController::class,"logout"])->name("logout");
+
+// Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/content', [CrudController::class,'index'])->name('content.show');
 Route::resource('/work', CrudController::class);
-
 Route::get('/prompt-create', [PromptController::class, 'prompt_create'])->name('prompt.create');
 Route::post('/prompt-create', [PromptController::class, 'prompt_store'])->name('prompt.store');
-
+// Route::get('/content', [AdminController::class,'show'])->name('content.show');
+});
