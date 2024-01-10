@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/clear', function () {
-
     Artisan::call('config:cache');
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
@@ -31,14 +30,14 @@ Route::get('/clear', function () {
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Auth::routes();
 
 // Route::get("/login", [AdminController::class,"login"])->name("login");
 Route::get("/", [AdminController::class,"logout"])->name("logout");
 
 // Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/content', [CrudController::class,'index'])->name('content.show');
