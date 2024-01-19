@@ -29,8 +29,11 @@
                      </div>
                      <div class="form-group">
                        <label for="">URL</label>
-                       <input type="text"
+                       <input type="url"
                          class="form-control" name="url" id="" aria-describedby="helpId" placeholder="" value="{{ $data->url }}">
+                          @error('url')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
                      </div>
                     <center>
                       <button type="submit" class="btn btn-primary">Submit</button>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PromptForm;
 use App\Models\PromptMaker;
-// use App\Models\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\BaseQuery;
 
@@ -16,18 +16,21 @@ class CrudController extends Controller
     use BaseQuery;
     private $_request = null;
     private $_modal = null;
-    public function __construct(Request $request,  PromptMaker $modal)
+    private $_model = null;
+    public function __construct(Request $request,  PromptMaker $modal, User $model)
     {
         $this->_request = $request;
         $this->_modal = $modal;
+        $this->_model = $model;
     }
 
 
 
     public function index()
     {
-        $data = $this->_modal->all();
-        return view('adminContent.show', compact('data'));
+        $role = $this->_model->all();
+     $data = $this->_modal->paginate(10);  // Display 10 items per page
+        return view('adminContent.show', compact('data','role'));
     }
     
 
@@ -45,23 +48,25 @@ class CrudController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
-    {
-       
-        $this->validate($this->_request, [
-            'name' => 'string|nullable|required',
-            'type' => 'string|nullable|required',
-            'description' => 'string|nullable|required',
-            'url'=> 'url',
-        ]);
+ public function store()
+{
+    $this->validate($this->_request, [
+        'name' => 'string|nullable|required',
+        'type' => 'string|nullable|required',
+        'description' => 'string|nullable|required',
+        'url' => 'url|nullable',
+    ]);
 
-        $data = $this->_request->except('_token');
-      
-        $var = $this->add($this->_modal, $data);
+    $data = $this->_request->except('_token');
 
+    $var = $this->add($this->_modal, $data);
+
+    if ($this->_request->expectsJson()) {
+        return response()->json(['success' => true, 'data' => $var, 'message' => 'Data created successfully!']);
+    } else {
         return back()->with('success', 'Data created successfully!');
     }
-
+}
 
 
     /**
@@ -89,7 +94,7 @@ class CrudController extends Controller
             'name' => 'string',
             'type' => 'string',
             'description' => 'string',
-            'url'=> 'url',
+            'url'=> 'url|required',
         ]);
 
         $data = $this->_request->except('_token', '_method');
