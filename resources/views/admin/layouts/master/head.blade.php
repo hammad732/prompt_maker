@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head>
     <link rel="icon" href="{{asset('images/newlogo.png')}}">
     <meta charset="UTF-8">
@@ -10,7 +8,7 @@
     <title>Prompt</title>
 
 
-   
+
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
  
@@ -31,6 +29,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/custom-two.css')}}">
 
+
       <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -40,3 +39,4 @@
 
 </head>
 </html>
+
