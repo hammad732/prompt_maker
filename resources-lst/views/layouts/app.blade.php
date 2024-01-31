@@ -2,14 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-      <link rel="icon" href="{{asset('images/newlogo.png')}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Prompt</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -33,7 +32,7 @@
                 </div>
                 @endrole
                 @role('user')
-                <div class="navbar-brand"> <a class="nav-link" href="{{ route('dashboard') }}">{{
+                <div class="navbar-brand"> <a class="nav-link" href="{{ route('user.create') }}">{{
         __('User') }}</a>
                 </div> -->
 
