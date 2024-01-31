@@ -1,6 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.card {
+  border: none;
+ 
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: orangered;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: orangered;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-link {
+    color: orangered;
+}
+.btn-link:hover{
+   
+    color: #007bff;
+}
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
